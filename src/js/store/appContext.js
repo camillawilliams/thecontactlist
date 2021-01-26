@@ -22,6 +22,7 @@ const injectContext = PassedComponent => {
 		);
 
 		useEffect(() => {
+			// the initialData is called from the fetch in flux to get the actions in place.
 			state.actions.initialData();
 		}, []);
 
