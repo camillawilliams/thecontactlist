@@ -6,6 +6,7 @@ export const AddContact = () => {
 	const { store, actions } = useContext(Context);
 	const [newContact, setNewContact] = useState({
 		agenda_slug: "rolando_scarfullery",
+		// added property above with my typed string from postman to manipulate newContact
 		full_name: "",
 		email: "",
 		phone: "",
