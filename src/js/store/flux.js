@@ -1,10 +1,12 @@
 const getState = ({ getStore, getActions, setStore }) => {
+	// we import getActions
 	return {
 		store: {
 			contacts: []
 			//Your data structures, A.K.A Entities
 		},
 		actions: {
+			// we recreate the addContact to add the fetch POST method to generate our new contact in our contacts page, replace data with newContact to implement the new contact the user will input
 			addContact: newContact => {
 				const tempStore = getStore();
 				fetch("https://assets.breatheco.de/apis/fake/contact/", {
