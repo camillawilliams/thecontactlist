@@ -15,8 +15,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify(newContact)
-				}) // getActions gives you access to line 7, with a dot you get to access
-					.then(() => getActions().initialData());
+				}).then(() => getActions().initialData());
+				// getActions gives you access to line 7, with a dot you get to access initialData
 			},
 			// creating our delete function
 			deleteContact: deletedContact => {
