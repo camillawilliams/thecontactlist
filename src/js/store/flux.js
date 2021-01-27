@@ -1,12 +1,12 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	// we import getActions
+	// we import getActions for initialData in line 19
 	return {
 		store: {
 			contacts: []
 			//Your data structures, A.K.A Entities
 		},
 		actions: {
-			// we recreate the addContact to add the fetch POST method to generate our new contact in our contacts page, replace data with newContact to implement the new contact the user will input
+			// we recreate the addContact to add the fetch POST method to generate our new contact in contacts page, replacing data with newContact to implement the new contact the user will input
 			addContact: newContact => {
 				const tempStore = getStore();
 				fetch("https://assets.breatheco.de/apis/fake/contact/", {
@@ -17,6 +17,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify(newContact)
 				}) // getActions gives you access to line 7, with a dot you get to access
 					.then(() => getActions().initialData());
+			},
+			// creating our delete function
+			deleteContact: deletedContact => {
+				const tempStore = getStore();
+				// write down the delete method using fetch to delete each contact.
 			},
 			//(Arrow) Functions that update the Store
 			// Remember to use the scope: scope.state.store & scope.setState()
