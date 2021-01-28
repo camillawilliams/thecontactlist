@@ -10,7 +10,6 @@ export const Contacts = () => {
 		showModal: false,
 		id: ""
 	});
-
 	return (
 		<div className="container">
 			<div>
@@ -37,3 +36,15 @@ export const Contacts = () => {
 		</div>
 	);
 };
+
+/* We can use the following for understanding how to use useEffect hook & const
+	const [count, setCount] = useState(0);
+	useEffect(() => {
+		console.log("hello");
+    }, [count]);
+    // if we leave the array empty we will only see the console once because we are not using the count function
+    // if we use count inside the array, eveyr time we click the button we will have execute the useState to get our count.
+    
+    HTML...
+    <button onClick={() => setCount(count + 1)}></button>
+*/
