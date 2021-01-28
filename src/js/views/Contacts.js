@@ -7,7 +7,8 @@ import { Context } from "../store/appContext";
 export const Contacts = () => {
 	const { store, actions } = useContext(Context);
 	const [state, setState] = useState({
-		showModal: false
+		showModal: false,
+		id: ""
 	});
 
 	return (
@@ -25,14 +26,14 @@ export const Contacts = () => {
 								<ContactCard
 									key={index}
 									contact={contact}
-									onDelete={() => setState({ showModal: true })}
+									onDelete={() => setState({ showModal: true, id: contact.id })}
 								/>
 							);
 						})}
 					</ul>
 				</div>
 			</div>
-			<Modal show={state.showModal} onClose={() => setState({ showModal: false })} />
+			<Modal show={state.showModal} id={state.id} onClose={() => setState({ showModal: false })} />
 		</div>
 	);
 };

@@ -2,12 +2,15 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const AddContact = () => {
+export const EditContact = () => {
 	const { store, actions } = useContext(Context);
-	const [newContact, setNewContact] = useState({
+	// use id in order to find this specific contact from store.contacts, then the next row to get id from props. how can we access it? open inspector, click edit pencil, go to components and look for edit contacts. There is a props  inside match>params It is props.match.params.id
+	// use a  find method to match params.id
+	const [editedContact, setEditedContact] = useState({
 		agenda_slug: "rolando_scarfullery",
 		// added property above with my typed string from postman to manipulate newContact instead of overwriting old values as it saves without worry when restarting gitpod
-		full_name: "",
+		full_name: "", // contact.full_name (this will ceom from a newly created contact variable from the find method)
+		id: "",
 		email: "",
 		phone: "",
 		address: ""
@@ -15,7 +18,7 @@ export const AddContact = () => {
 	return (
 		<div className="container">
 			<div>
-				<h1 className="text-center mt-5">Add a new contact</h1>
+				<h1 className="text-center mt-5">Edit a contact</h1>
 				<form>
 					<div className="form-group">
 						{/* get the input field to be saved onto the array, use onChange event */}
@@ -25,7 +28,7 @@ export const AddContact = () => {
 							className="form-control"
 							placeholder="Full Name"
 							// ... is a spread operator, expanding into individual elements
-							onChange={event => setNewContact({ ...newContact, full_name: event.target.value })}
+							onChange={event => setEditedContact({ ...editedContact, full_name: event.target.value })}
 						/>
 					</div>
 					<div className="form-group">
@@ -34,7 +37,7 @@ export const AddContact = () => {
 							type="email"
 							className="form-control"
 							placeholder="Enter email"
-							onChange={event => setNewContact({ ...newContact, email: event.target.value })}
+							onChange={event => setEditedContact({ ...editedContact, email: event.target.value })}
 						/>
 					</div>
 					<div className="form-group">
@@ -43,7 +46,7 @@ export const AddContact = () => {
 							type="phone"
 							className="form-control"
 							placeholder="Enter phone"
-							onChange={event => setNewContact({ ...newContact, phone: event.target.value })}
+							onChange={event => setEditedContact({ ...editedContact, phone: event.target.value })}
 						/>
 					</div>
 					<div className="form-group">
@@ -52,7 +55,7 @@ export const AddContact = () => {
 							type="text"
 							className="form-control"
 							placeholder="Enter address"
-							onChange={event => setNewContact({ ...newContact, address: event.target.value })}
+							onChange={event => setEditedContact({ ...editedContact, address: event.target.value })}
 						/>
 					</div>
 					<button

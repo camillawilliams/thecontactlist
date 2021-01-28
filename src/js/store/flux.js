@@ -15,13 +15,48 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify(newContact)
-				}).then(() => getActions().initialData());
-				// getActions gives you access to line 7, with a dot you get to access initialData
+				})
+					.then(() => getActions().initialData())
+					// getActions gives you access to line 7, with a dot you get to access initialData
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
 			},
-			// creating our delete function
-			deleteContact: deletedContact => {
-				const tempStore = getStore();
-				// write down the delete method using fetch to delete each contact.
+			// creating our delete functionality
+			deleteContact: id => {
+				fetch(`https://assets.breatheco.de/apis/fake/contact/${id}`, { method: "DELETE" })
+					.then(response => response.json())
+					.then(response => {
+						fetch("https://assets.breatheco.de/apis/fake/contact/agenda/rolando_scarfullery")
+							.then(function(response) {
+								if (!response.ok) {
+									throw Error(response.statusText);
+								}
+								// Read the response as json.
+								return response.json();
+							})
+							.then(function(responseAsJson) {
+								// Do stuff with the JSON
+								setStore({ contacts: responseAsJson });
+							})
+							.catch(function(error) {
+								console.log("Looks like there was a problem: \n", error);
+							});
+					});
+			},
+			editContact: editedContact => {
+				fetch(`https://assets.breatheco.de/apis/fake/contact/${editedContact.id}`, {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(editedContact)
+				})
+					.then(() => getActions().initialData())
+					// getActions gives you access to line 7, with a dot you get to access initialData
+					.catch(function(error) {
+						console.log("Looks like there was a problem: \n", error);
+					});
 			},
 			//(Arrow) Functions that update the Store
 			// Remember to use the scope: scope.state.store & scope.setState()
