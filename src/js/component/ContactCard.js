@@ -21,8 +21,8 @@ export const ContactCard = props => {
 				</div>
 				<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
 					<div className=" float-right">
-						<Link to="">
-							<button className="btn" onClick={() => props.history.push(`/edit/${props.contact.id}`)}>
+						<Link to={`/edit/${props.contact.id}`}>
+							<button className="btn">
 								{/* Above we will create our functionality of editing a contact */}
 								<i className="fas fa-pencil-alt mr-3" />
 							</button>
