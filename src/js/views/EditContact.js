@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import PropTypes from "prop-types";
 
-export const EditContact = () => {
+export const EditContact = props => {
 	const { store, actions } = useContext(Context);
 	// use id in order to find this specific contact from store.contacts, then the next row to get id from props. how can we access it? open inspector, click edit pencil, go to components and look for edit contacts. There is a props  inside match>params It is props.match.params.id
 	// use a  find method to match params.id
+	// added property above with my typed string from postman to manipulate newContact instead of overwriting old values as it saves without worry when restarting gitpod
+	// contact.full_name (this will come from a newly created contact variable from the find method)
 	const [editedContact, setEditedContact] = useState({
 		agenda_slug: "rolando_scarfullery",
-		// added property above with my typed string from postman to manipulate newContact instead of overwriting old values as it saves without worry when restarting gitpod
-		full_name: "", // contact.full_name (this will ceom from a newly created contact variable from the find method)
+		full_name: "",
 		id: "",
 		email: "",
 		phone: "",
@@ -62,7 +64,7 @@ export const EditContact = () => {
 						type="button"
 						className="btn btn-primary form-control"
 						onClick={() => {
-							actions.addContact(newContact);
+							actions.editContact(editedContact);
 						}}>
 						save
 					</button>
@@ -73,4 +75,8 @@ export const EditContact = () => {
 			</div>
 		</div>
 	);
+};
+
+EditContact.propTypes = {
+	location: PropTypes.object
 };

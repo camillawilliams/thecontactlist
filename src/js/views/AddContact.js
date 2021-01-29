@@ -4,7 +4,6 @@ import { Context } from "../store/appContext";
 
 export const AddContact = () => {
 	const { store, actions } = useContext(Context);
-	console.log(store);
 	const [newContact, setNewContact] = useState({
 		agenda_slug: "rolando_scarfullery",
 		// added property above with my typed string from postman to manipulate newContact instead of overwriting old values as it saves without worry when restarting gitpod
