@@ -21,7 +21,7 @@ export const ContactCard = props => {
 				</div>
 				<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
 					<div className=" float-right">
-						<Link to={`/edit/${props.contact.id}`}>
+						<Link to={`/edit/${props.contact.id}/${props.index}/${props.contact.full_name}`}>
 							<button className="btn">
 								{/* Above we will create our functionality of editing a contact */}
 								<i className="fas fa-pencil-alt mr-3" />
@@ -62,6 +62,7 @@ export const ContactCard = props => {
  * your component's properties
  **/
 ContactCard.propTypes = {
+	index: PropTypes.number,
 	contact: PropTypes.object,
 	history: PropTypes.object,
 	onDelete: PropTypes.func
