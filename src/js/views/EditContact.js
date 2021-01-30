@@ -14,10 +14,9 @@ export const EditContact = props => {
 	const [editedContact, setEditedContact] = useState({
 		agenda_slug: "rolando_scarfullery",
 		full_name: store.contacts[params.index].full_name,
-		id: "",
-		email: "",
-		phone: "",
-		address: ""
+		email: store.contacts[params.index].email,
+		phone: store.contacts[params.index].phone,
+		address: store.contacts[params.index].address
 	});
 	return (
 		<div className="container">
@@ -42,6 +41,7 @@ export const EditContact = props => {
 							type="email"
 							className="form-control"
 							placeholder="Enter email"
+							value={editedContact.email}
 							onChange={event => setEditedContact({ ...editedContact, email: event.target.value })}
 						/>
 					</div>
@@ -51,6 +51,7 @@ export const EditContact = props => {
 							type="phone"
 							className="form-control"
 							placeholder="Enter phone"
+							value={editedContact.phone}
 							onChange={event => setEditedContact({ ...editedContact, phone: event.target.value })}
 						/>
 					</div>
@@ -60,6 +61,7 @@ export const EditContact = props => {
 							type="text"
 							className="form-control"
 							placeholder="Enter address"
+							value={editedContact.address}
 							onChange={event => setEditedContact({ ...editedContact, address: event.target.value })}
 						/>
 					</div>
@@ -67,7 +69,7 @@ export const EditContact = props => {
 						type="button"
 						className="btn btn-primary form-control"
 						onClick={() => {
-							actions.editContact(editedContact);
+							actions.editContact(editedContact, store.contacts[params.index].id);
 						}}>
 						save
 					</button>
