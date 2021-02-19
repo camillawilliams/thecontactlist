@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
 export const EditContact = props => {
 	const { store, actions } = useContext(Context);
+	const history = useHistory();
 	const params = useParams();
 	console.log(params);
 	// use id in order to find this specific contact from store.contacts, then the next row to get id from props. how can we access it? open inspector, click edit pencil, go to components and look for edit contacts. There is a props  inside match>params It is props.match.params.id
@@ -70,6 +71,7 @@ export const EditContact = props => {
 						className="btn btn-primary form-control"
 						onClick={() => {
 							actions.editContact(editedContact, store.contacts[params.index].id);
+							history.push("/");
 						}}>
 						save
 					</button>

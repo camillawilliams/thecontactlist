@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const AddContact = () => {
 	const { store, actions } = useContext(Context);
+	const history = useHistory();
 	const [newContact, setNewContact] = useState({
 		agenda_slug: "rolando_scarfullery",
 		// added property above with my typed string from postman to manipulate newContact instead of overwriting old values as it saves without worry when restarting gitpod
@@ -60,6 +61,7 @@ export const AddContact = () => {
 						className="btn btn-primary form-control"
 						onClick={() => {
 							actions.addContact(newContact);
+							history.push("/");
 						}}>
 						save
 					</button>
