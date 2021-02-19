@@ -41,7 +41,7 @@ export const Modal = props => {
 							data-dismiss="modal"
 							onClick={() => {
 								actions.deleteContact(props.id);
-								props.onClose();
+								props.onClose(); // copy/pasted the same props from the button above to close
 							}}>
 							Do it!
 						</button>

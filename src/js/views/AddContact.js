@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 export const AddContact = () => {
 	const { store, actions } = useContext(Context);
 	const history = useHistory();
+	// added useHistory hook to push back to the main page at '/' on the save button
 	const [newContact, setNewContact] = useState({
 		agenda_slug: "rolando_scarfullery",
 		// added property above with my typed string from postman to manipulate newContact instead of overwriting old values as it saves without worry when restarting gitpod

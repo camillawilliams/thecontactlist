@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 export const EditContact = props => {
 	const { store, actions } = useContext(Context);
 	const history = useHistory();
+	// // added useHistory hook to push back to the main page at '/' on the save button
 	const params = useParams();
 	console.log(params);
 	// use id in order to find this specific contact from store.contacts, then the next row to get id from props. how can we access it? open inspector, click edit pencil, go to components and look for edit contacts. There is a props  inside match>params It is props.match.params.id
