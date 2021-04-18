@@ -14,7 +14,7 @@ export const EditContact = props => {
 	// added property above with my typed string from postman to manipulate newContact instead of overwriting old values as it saves without worry when restarting gitpod
 	// contact.full_name (this will come from a newly created contact variable from the find method)
 	const [editedContact, setEditedContact] = useState({
-		agenda_slug: "rolando_scarfullery",
+		agenda_slug: "camilla_w",
 		full_name: store.contacts[params.index].full_name,
 		email: store.contacts[params.index].email,
 		phone: store.contacts[params.index].phone,

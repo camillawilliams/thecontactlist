@@ -27,7 +27,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(`https://assets.breatheco.de/apis/fake/contact/${id}`, { method: "DELETE" })
 					.then(response => response.json())
 					.then(response => {
-						fetch("https://assets.breatheco.de/apis/fake/contact/agenda/rolando_scarfullery")
+						fetch("https://assets.breatheco.de/apis/fake/contact/agenda/camilla_w")
 							.then(function(response) {
 								if (!response.ok) {
 									throw Error(response.statusText);
@@ -62,7 +62,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//(Arrow) Functions that update the Store
 			// Remember to use the scope: scope.state.store & scope.setState()
 			initialData: () => {
-				fetch("https://assets.breatheco.de/apis/fake/contact/agenda/rolando_scarfullery")
+				fetch("https://assets.breatheco.de/apis/fake/contact/agenda/camilla_w")
 					.then(function(response) {
 						if (!response.ok) {
 							// if the response is good, it will avoid showing the error. If the response is NOT okay it will show up.
